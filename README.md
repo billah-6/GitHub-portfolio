@@ -77,3 +77,4 @@ Je cherche à combiner mes compétences en finance et en tech pour créer de la 
 
 > _“L'analyse financière appuyée par les données est la boussole du décideur moderne.”_
 
+
