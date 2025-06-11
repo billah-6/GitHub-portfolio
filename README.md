@@ -1,80 +1,114 @@
-<h1 align="center" style="color:black;">🧑‍💼 Abdelilah Ait Ouabbou</h1>
-<p align="center" style="color:black;">
-Auditeur Financier Junior | Passionné par l'analyse de données 📊 | Basé au Maroc 🇲🇦
-</p>
+// Portfolio React avec menu à gauche - Dark Mode
 
----
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Home,
+  GraduationCap,
+  Briefcase,
+  Award,
+  Languages,
+  Mail
+} from "lucide-react";
 
-## 👋 À propos de moi
+const sections = [
+  { id: "presentation", label: "Présentation", icon: <Home /> },
+  { id: "formation", label: "Formation", icon: <GraduationCap /> },
+  { id: "experience", label: "Expérience", icon: <Briefcase /> },
+  { id: "certificats", label: "Certificats", icon: <Award /> },
+  { id: "langues", label: "Langues", icon: <Languages /> },
+  { id: "contact", label: "Contact", icon: <Mail /> }
+];
 
-Je suis un **auditeur financier** chez **TCG**, avec une passion pour l’**analyse de données**, les outils de visualisation comme **Power BI** et l’automatisation en **Python**.  
-Je cherche à combiner mes compétences en finance et en tech pour créer de la valeur dans le monde de l’audit, du contrôle interne et du reporting financier.
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState("presentation");
 
----
+  return (
+    <div className="flex min-h-screen bg-zinc-900 text-white">
+      <aside className="w-64 bg-zinc-800 p-4 space-y-4">
+        <h1 className="text-2xl font-bold text-yellow-400">Abdelilah</h1>
+        <nav className="space-y-2">
+          {sections.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => setActiveSection(section.id)}
+              className={`flex items-center gap-2 w-full p-2 rounded hover:bg-zinc-700 ${
+                activeSection === section.id ? "bg-zinc-700" : ""
+              }`}
+            >
+              {section.icon} {section.label}
+            </button>
+          ))}
+        </nav>
+      </aside>
 
-## 🎓 Formation
+      <main className="flex-1 p-8">
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          {activeSection === "presentation" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Présentation</h2>
+              <p>Je suis Abdelilah Ait Ouabbou, auditeur financier passionné par l'analyse de données et les outils modernes comme Python, Power BI et Excel avancé.</p>
+            </section>
+          )}
 
-- 🎓 **Master en Audit et Contrôle de Gestion** — [Nom de ton université], Maroc  
-- 📚 Cours spécialisés : Audit financier, Contrôle Interne, Power BI, Python, Analyse des données  
+          {activeSection === "formation" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Formation</h2>
+              <ul className="list-disc ml-6">
+                <li>Master en Audit et Contrôle de Gestion - Maroc</li>
+                <li>Modules : Audit, Contrôle interne, Power BI, Python</li>
+              </ul>
+            </section>
+          )}
 
----
+          {activeSection === "experience" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Expérience</h2>
+              <ul className="list-disc ml-6">
+                <li>Auditeur Financier Junior chez TCG (2023 - Aujourd’hui)</li>
+                <li>Stage en Contrôle de Gestion - [Entreprise]</li>
+              </ul>
+            </section>
+          )}
 
-## 💼 Expérience Professionnelle
+          {activeSection === "certificats" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Certificats</h2>
+              <ul className="list-disc ml-6">
+                <li>Power BI Analyst – Microsoft</li>
+                <li>Google Data Analytics – Coursera</li>
+                <li>Python pour la Finance – OpenClassrooms</li>
+              </ul>
+            </section>
+          )}
 
-- 🏢 **Auditeur Financier Junior** – TCG  
-  📅 2023 – Aujourd’hui  
-  🔹 Missions d’audit légal et contractuel  
-  🔹 Tests de procédures, analyse de risques, travaux de clôture
+          {activeSection === "langues" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Langues</h2>
+              <ul className="list-disc ml-6">
+                <li>Français – Courant</li>
+                <li>Anglais – Professionnel</li>
+                <li>Arabe – Langue maternelle</li>
+              </ul>
+            </section>
+          )}
 
-- 📊 **Stage en Contrôle de Gestion** – [Nom de l’entreprise]  
-  📅 [Année]  
-  🔹 Mise en place de tableaux de bord  
-  🔹 Analyse budgétaire et suivi de performance
-
----
-
-## 📜 Certifications
-
-- ✅ **Microsoft Power BI Analyst** *(en cours / obtenu)*  
-- ✅ **Google Data Analytics** *(Coursera / en cours / obtenu)*  
-- ✅ **Initiation à Python pour l’analyse de données** *(OpenClassrooms, Udemy…)*
-
----
-
-## 💻 Compétences Techniques
-
-| Domaine           | Compétences principales                    |
-|------------------|--------------------------------------------|
-| 🔍 Audit & Finance | Audit légal, contrôle interne, procédures |
-| 📊 Data & BI       | Power BI, Excel Avancé, Tableaux croisés dyn. |
-| 🐍 Python          | Pandas, Matplotlib, analyse financière   |
-| 🧮 Outils           | GitHub, VS Code, GitHub Desktop, Excel, Word |
-
----
-
-## 🌐 Langues Parlées
-
-- 🇫🇷 **Français** – Courant  
-- 🇬🇧 **Anglais** – Professionnel  
-- 🇲🇦 **Arabe** – Langue maternelle
-
----
-
-## 🏅 Distinctions / Awards
-
-- 🥇 Meilleur Mémoire de Master en Audit (2023)  
-- 🎖️ Prix d’excellence académique (Université)
-
----
-
-## 📬 Me Contacter
-
-- 📧 Email : [ton.email@exemple.com]  
-- 💼 [LinkedIn](https://www.linkedin.com/in/ton-profil)  
-- 📂 [Portfolio GitHub](https://github.com/ton-utilisateur)
-
----
-
-> _“L'analyse financière appuyée par les données est la boussole du décideur moderne.”_
+          {activeSection === "contact" && (
+            <section>
+              <h2 className="text-3xl font-semibold mb-4">Contact</h2>
+              <p>Email : ton.email@exemple.com</p>
+              <p>LinkedIn : <a href="https://linkedin.com/in/ton-profil" className="text-blue-400 hover:underline">ton-profil</a></p>
+            </section>
+          )}
+        </motion.div>
+      </main>
+    </div>
+  );
+}
 
 
